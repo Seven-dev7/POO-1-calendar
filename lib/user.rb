@@ -13,10 +13,10 @@ class User
     end
 
     def self.find_by_email(email)
-        if @@all_users.include?(email)
-            return self
+        if @@all_users.select { |user| user.email == email}
+            return @@all_users.select { |user| user.email == email}
         else
-            return false
+            return @@all_users
         end
     end
 end
