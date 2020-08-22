@@ -28,7 +28,23 @@ class Event
         end
     end
 
-    def is_futur?
+    def is_future?
         !is_past?
+    end
+
+    def is_soon?
+        time = Time.now
+        if @start_date == time - 30*60
+            return true
+        else
+            return false
+        end
+    end
+
+    def to_s
+        p "--> Date de début : #{@start_date}"
+        p "--> Durée : #{duration} min"
+        p "--> Titre : #{@title}"
+        p "--> Invités : #{@attendees.map { |i| "'" + i.to_s + "'" }.join(",")}"
     end
 end

@@ -12,4 +12,11 @@ class User
         @@all_users
     end
 
+    def self.find_by_email(email)
+        if @@all_users.include?(email)
+            return self
+        else
+            return false
+        end
+    end
 end
