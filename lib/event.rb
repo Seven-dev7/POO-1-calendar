@@ -19,4 +19,16 @@ class Event
     def end_date
         end_date = @start_date + @duration*60
     end
+
+    def is_past?
+        if @start_date < Time.now
+            return true
+        else
+            return false
+        end
+    end
+
+    def is_futur?
+        !is_past?
+    end
 end
