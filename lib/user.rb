@@ -16,7 +16,7 @@ class User
         if @@all_users.select { |user| user.email == email}
             return @@all_users.select { |user| user.email == email}
         else
-            return @@all_users
+            return @@all_users.all
         end
     end
 end

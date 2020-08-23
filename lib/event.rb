@@ -8,8 +8,7 @@ class Event
         @start_date = Time.parse(start_date.to_s)
         @duration = duration.to_i
         @title = title.to_s
-        @attendees = []
-        @attendees << attendees.to_s
+        @attendees = attendees
     end
     
     def postpone_24h
@@ -46,5 +45,20 @@ class Event
         p "--> Durée : #{duration} min"
         p "--> Titre : #{@title}"
         p "--> Invités : #{@attendees.map { |i| "'" + i.to_s + "'" }.join(",")}"
+    end
+    def age_analysis
+        age_array = [] 
+        average = 0
+    
+        @attendees.each do |attendee|
+            age_array << attendee.age 
+            average = average + attendee.age
+        end
+    
+        average = average / @attendees.length
+    
+        puts "Voici les âges des participants :"
+        puts age_array.join(", ")
+        puts "La moyenne d'âge est de #{average} ans"
     end
 end
